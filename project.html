@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: grey; }
+        .slider-container { position: relative; width: 80%; max-width: 600px; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; position: relative; }
+        .slide img { width: 100%; display: block; }
+        
+        
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide">
+                <img src="https://www.tourindiawithdriver.com/UPLOAD/1274_lucknow-India.jpg" alt="LUCKNOW">
+                <div class="caption">LUCKNOW</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.travelandleisureasia.com/wp-content/uploads/sites/3/2024/01/15134114/kashmir-deepanshu-nayak-1600x900.jpeg" alt="KASHMIR">
+                <div class="caption">KASHMIR</div>
+            </div>
+            <div class="slide">
+                <img src="https://rajasthanyatra.in/blog/wp-content/uploads/2024/04/Galta-Ji-Temple-.webp" alt="RAJASTHAN">
+                <div class="caption">RAJASTHAN</div>
+            </div>
+            <div class="slide">
+                <img src="https://media.istockphoto.com/id/942152278/photo/gadisar-lake-at-jaisalmer-rajasthan-at-sunrise-with-ancient-temples-and-archaeological-ruins.jpg?s=612x612&w=0&k=20&c=HvhbHZ8HH_lAjAAI2pmqL4mUipyyAwy31qp5jjKQTO0=" alt="JAISALMER">
+                <div class="caption">JAISALMER</div>
+            </div>
+            <div class="slide">
+                <img src="https://www.indiadrivertours.com/wp-content/uploads/2017/06/tpkg-manalitour.jpg" alt="MANALI">
+                <div class="caption">MANALI</div>
+            </div>
+            <div class="slide">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Taj_Mahal%2C_Agra%2C_India.jpg/1200px-Taj_Mahal%2C_Agra%2C_India.jpg" alt="TAJ MAHAL">
+                <div class="caption">TAJ MAHAL</div>
+            </div>
+            <div class="slide">
+                <img src="https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg" alt="DELHI">
+                <div class="caption">DELHI</div>
+            </div>
+            <div class="slide">
+                <img src="https://static.toiimg.com/photo/105293415.cms" alt="DEHRADUN">
+                <div class="caption">DEHRADUN</div>
+            </div>
+            <div class="slide">
+                <img src="https://www.colive.com/blog/wp-content/uploads/2024/06/Places-to-visit-at-night-in-Pune-1024x576-1.jpg" alt="PUNE">
+                <div class="caption">PUNE</div>
+            </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function moveSlide(step) {
+            currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        setInterval(() => moveSlide(1), 3000);
+    </script>
+</body>
+</html>
